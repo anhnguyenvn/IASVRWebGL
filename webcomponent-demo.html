@@ -407,25 +407,25 @@ const engine = scene.getEngine();</pre>
   <script>
     (function() {
       // Load domain configuration first
-      const configScript = document.createElement('script');
-      configScript.src = '/config-domain.js';
-      configScript.onload = function() {
+      // const configScript = document.createElement('script');
+      // configScript.src = '/config-domain.js';
+      // configScript.onload = function() {
         // Wait for domain config to load
-        document.addEventListener('myroom-domain-configured', function(event) {
-          const config = event.detail;
-          console.log('Loading MyRoom WebComponent from:', config.baseDomain);
+        // document.addEventListener('myroom-domain-configured', function(event) {
+          // const config = event.detail;
+          // console.log('Loading MyRoom WebComponent from:', config.baseDomain);
           
-          // Update domain info in header
-          const domainInfo = document.getElementById('domain-info');
-          if (domainInfo) {
-             domainInfo.textContent = config.baseDomain + '/dist/myroom-webcomponent.es.js';
-           }
+          // // Update domain info in header
+          // const domainInfo = document.getElementById('domain-info');
+          // if (domainInfo) {
+          //    domainInfo.textContent = config.baseDomain + '/dist/myroom-webcomponent.es.js';
+          //  }
           
           // Try to load ES module first, fallback to UMD if ES module fails
           function loadESModule() {
             const script = document.createElement('script');
             script.type = 'module';
-            script.src = config.baseDomain + '/dist/myroom-webcomponent.es.js';
+            script.src = 'https://29ee-2001-ee0-4fb5-7550-d517-cb78-f7d0-b43c.ngrok-free.app/dist/myroom-webcomponent.es.js';
             
             script.onload = function() {
               console.log('MyRoom WebComponent (ES Module) loaded successfully from external domain');
@@ -444,7 +444,7 @@ const engine = scene.getEngine();</pre>
           
           function loadUMDModule() {
             const script = document.createElement('script');
-            script.src = config.baseDomain + '/dist/myroom-webcomponent.umd.js';
+            script.src = 'https://29ee-2001-ee0-4fb5-7550-d517-cb78-f7d0-b43c.ngrok-free.app/dist/myroom-webcomponent.umd.js';
             
             script.onload = function() {
               console.log('MyRoom WebComponent (UMD) loaded successfully from external domain');
@@ -479,8 +479,8 @@ const engine = scene.getEngine();</pre>
           
           // Start with ES module
           loadESModule();
-        });
-      };
+        // });
+      // };
       document.head.appendChild(configScript);
     })();
   </script>
